@@ -11,7 +11,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <div className="App">
 
         <Route exact path='/register'>
           <Register />
@@ -27,7 +26,6 @@ function App() {
           <Profile />
         </Route>
         
-      </div>
     </Router>
   );
 }

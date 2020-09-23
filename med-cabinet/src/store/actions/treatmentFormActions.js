@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 // action types
@@ -65,11 +64,9 @@ export const registerUser = (info) => {
         axios
             .post(`${url}auth/register`, info)
             .then(res => {
-                console.log(res, "<====REGISTER USER ACTION SUCCESS")
                 dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data.data })
             })
             .catch(err => {
-                console.log(err, '<====REGISTER USER ACTION FAILURE')
                 dispatch({ type: REGISTER_USER_ERROR, payload: err })
             })
             .finally(() => {
@@ -82,9 +79,8 @@ export const registerUser = (info) => {
 export const addTreatment = (info) => {
     return (dispatch) => {
         dispatch({ type: ADD_TREATMENT});
-        console.log(info, "HERE")
         axios
-            .post(`https://potbot2020.herokuapp.com/predict`, info) // to update
+            .post(`https://potbot2020.herokuapp.com/predict`, info) 
             .then(res => {
                 console.log(res, "ACTION CONSOLEEE");
                 dispatch({
@@ -105,24 +101,34 @@ export const addTreatment = (info) => {
 }
 
 // Edit Profile Action
-// export const editProfile = () => {
-//     return (dispatch) => {
-//         dispatch({ type: EDIT_PROFILE});
-//         axios
-//             .put('auth/', credentials)
-//             .then(res => console.log(res))
-//             .catch(err => console.log(err))
-//     }
-// }
+export const editProfile = (user, id) => {
+    return (dispatch) => {
+        dispatch({ type: EDIT_PROFILE })
+        axios
+            .put(`${url}auth/${id}`, user)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+}
 
 // Delete Profile Action
 export const deleteProfile = (user, id) => {
-    console.log(id, "<=======user id")
     return (dispatch) => {
         dispatch({ type: DELETE_PROFILE});
         axios
-            .delete(`${url}auth/${id}`, user) // to update 
-            .then(res => console.log(res, "<==========="))
-            .catch(err => console.log(err))
+            .delete(`${url}auth/${id}`, user)  
+            .then(res => {
+                dispatch({
+                    type: DELETE_PROFILE_SUCCESS,
+                    payload: res.data.data.message
+                })
+            })
+            .catch(err => {
+                console.log(err)
+                dispatch({
+                    type: DELETE_PROFILE_ERROR,
+                    payload: 'There was an error'
+                })
+            })
     }
 }

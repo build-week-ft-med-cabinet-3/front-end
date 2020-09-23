@@ -3,7 +3,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import AccordianDetails from '@material-ui/core/AccordionDetails';
 import { FormControlLabel } from '@material-ui/core';
 
-const SpecificSymptoms = ({symptoms, formValues, checkHandler, theme}) => {
+const SpecificSymptoms = ({ symptoms, checkHandler }) => {
     const [isChecked, setIsChecked] = useState(false);
 
     const clickHandler = (evt) => {

@@ -4,7 +4,7 @@ import Accordian from '@material-ui/core/Accordion';
 import AccordianDetails from '@material-ui/core/AccordionDetails';
 import AccordianSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { FormControlLabel, List, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import SpecificSymptoms from './SpecificSymptoms';
 
 

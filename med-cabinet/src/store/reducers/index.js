@@ -49,7 +49,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: true,
             }
-        case ADD_TREATMENT_SUCCESS: // to change
+        case ADD_TREATMENT_SUCCESS: 
             return {
                 ...state,
                 isFetching: false,
@@ -58,31 +58,32 @@ export const reducer = (state = initialState, action) => {
                     action
                 }
             }
-        case ADD_TREATMENT_ERROR: // to change
+        case ADD_TREATMENT_ERROR: 
             return {
                 ...state,
                 isFetching: false,
                 error: action.payload.message,
             }
-        case EDIT_PROFILE: // to change
+        case EDIT_PROFILE: 
+            console.log(action, state)
             return {
                 ...state,
                 isFetching: true,
             }
-        case EDIT_PROFILE_SUCCESS: // to change
+        case EDIT_PROFILE_SUCCESS: 
             return {
                 ...state,
-                username: action.payload,
+                email: action.payload,
                 password: action.payload,
                 isFetching: false,
             }
-        case EDIT_PROFILE_ERROR: // to change
+        case EDIT_PROFILE_ERROR: 
             return {
                 ...state,
                 isFetching: false,
                 error: action.payload.message,
             }
-        case DELETE_PROFILE: // to change
+        case DELETE_PROFILE: 
             console.log(action.payload)
             return {
                 ...state,
@@ -90,14 +91,14 @@ export const reducer = (state = initialState, action) => {
                 password: action.payload,
                 isFetching: true,
             }
-        case DELETE_PROFILE_SUCCESS: // to change
+        case DELETE_PROFILE_SUCCESS: 
             return {
                 ...state,
                 username: action.payload,
                 password: action.payload,
                 isFetching: false,
             }
-        case DELETE_PROFILE_ERROR: // to change
+        case DELETE_PROFILE_ERROR: 
             return {
                 ...state,
                 isFetching: false,

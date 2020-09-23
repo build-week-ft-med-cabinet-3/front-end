@@ -5,11 +5,13 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { deleteProfile } from '../store/actions/treatmentFormActions';
+import { deleteProfile, editProfile } from '../store/actions/treatmentFormActions';
+import TextField from '@material-ui/core/TextField';
 
 const Profile = (props) => {
     const {email, password, deleteProfile, state} = props;
     const [isClicked, setIsClick] = useState(false);
+    const [editState, setEditState] = useState(state);
     const params = useParams();
 
     const clickHandler = (evt) => {
@@ -21,10 +23,24 @@ const Profile = (props) => {
         setIsClick(true);
     }
 
+    const changeHandler = (evt) => {
+        evt.preventDefault();
+        const {name, value} = evt.target;
+        setEditState({
+            ...editState,
+            [name]: value,
+        });
+    }
+
     const finalDelete = (evt) => {
         evt.preventDefault();
-        console.log(params.id)
-        deleteProfile(state, params.id)
+        console.log(params.id);
+        deleteProfile(state, params.id);
+    }
+
+    const editUser = (evt) => {
+        evt.preventDefault();
+        editProfile(editState, params.id);
     }
     
     return (
@@ -40,10 +56,30 @@ const Profile = (props) => {
             src={require('/Users/davidgold/Documents/lambdaSchool/projects/unit 3/build-week/front-end/med-cabinet/src/assets/Empty User.png')}
             />
             <div className='profile-credentials-div'>
-                <h3>email: {email}</h3>
-                <h3>password: {password}</h3>
+                    <TextField
+                    id='filled-basic'
+                    label='Email'
+                    variant='filled'
+                    color='secondary'
+                    placeholder={editState.email}
+                    name='email'
+                    value={editState.email}
+                    onChange={changeHandler}
+                    />
+
+                    <TextField
+                    id='filled-basic'
+                    label='Password'
+                    variant='filled'
+                    color='secondary'
+                    placeholder={editState.password}
+                    name='password'
+                    value={editState.password}
+                    onChange={changeHandler}
+                    />
+
                 <div>
-                    <span onClick={null} className='profile-adjustment-links'><EditIcon/><p>Edit Information</p></span>
+                    <span onClick={editUser} className='profile-adjustment-links'><EditIcon/><p>Edit Information</p></span>
                     <span onClick={preventDelete} className='profile-adjustment-links'><DeleteIcon color='secondary'/><p className='delete-profile-text'>Delete Account</p></span>
                 </div>
             </div>
@@ -67,4 +103,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {deleteProfile})(Profile);
+export default connect(mapStateToProps, {editProfile, deleteProfile})(Profile);
