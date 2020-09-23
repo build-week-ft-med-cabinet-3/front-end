@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Header from "./Header";
 import TreatmentForm from "./TreatmentForm";
+
 import SavedStrains from "./SavedStrains";
 import RecommendedStrains from "./RecommendedStrains";
 
