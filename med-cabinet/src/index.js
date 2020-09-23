@@ -8,8 +8,17 @@ import { reducer } from './store/reducers';
 import * as serviceWorker from './serviceWorker';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+import { loadState, saveState } from './api/index';
 
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+const persistedState = loadState();
+const store = createStore(reducer, persistedState, applyMiddleware(thunk, logger));
+
+store.subscribe(() => {
+  saveState(store.getState({
+    email: store.getState().email,
+    password: store.getState().password
+  }));
+})
 
 ReactDOM.render(
   <React.StrictMode>
