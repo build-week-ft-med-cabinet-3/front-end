@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Header from "./Header";
 import TreatmentForm from "./TreatmentForm";
 import SavedStrains from "./SavedStrains";
+import RecommendedStrains from "./RecommendedStrains";
 
 const DashboardContainer = styled.div`
   width: 100vw;
@@ -30,6 +31,7 @@ const Dashboard = () => {
         <TreatmentForm />
         <StrainContainer>
           <SavedStrains />
+          <RecommendedStrains />
         </StrainContainer>
       </DashComponents>
     </DashboardContainer>
