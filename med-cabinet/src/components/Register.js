@@ -40,7 +40,6 @@ const SignUp = ({registerUser}) => {
       
     const onSubmit = (evt) => {
         evt.preventDefault();
-        console.log('SUBMITHANDLER', values)
         registerUser(values)
     };
     

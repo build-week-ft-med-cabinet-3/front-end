@@ -61,20 +61,19 @@ export const loginUser = (info) => {
 export const registerUser = (info) => {
     console.log(info)
     return (dispatch) => {
-        console.log(dispatch);
         dispatch({ type: REGISTER_USER })
         axios
             .post(`${url}auth/register`, info)
             .then(res => {
                 console.log(res, "<====REGISTER USER ACTION SUCCESS")
-                dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data })
+                dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data.data })
             })
             .catch(err => {
                 console.log(err, '<====REGISTER USER ACTION FAILURE')
                 dispatch({ type: REGISTER_USER_ERROR, payload: err })
             })
             .finally(() => {
-                window.location = "http://www.google.com"; // to change
+                // window.location = "http://www.google.com"; // to change
             })
     }
 }

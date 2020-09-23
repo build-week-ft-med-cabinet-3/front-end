@@ -109,11 +109,11 @@ export const reducer = (state = initialState, action) => {
                 isFetching: true,
             }
         case LOGIN_USER_SUCCESS: 
-            const creds = JSON.parse(action.payload)
+            const loginCreds = JSON.parse(action.payload)
             return {
                 ...state,
-                email: creds.email,
-                password: creds.password,
+                email: loginCreds.email,
+                password: loginCreds.password,
                 isFetching: false,
             }
         case LOGIN_USER_ERROR: 
@@ -128,8 +128,11 @@ export const reducer = (state = initialState, action) => {
                 isFetching: true,
             }
         case REGISTER_USER_SUCCESS: 
+        const registerCreds = action.payload
             return {
                 ...state,
+                email: registerCreds.email,
+                password: registerCreds.email,
                 isFetching: false,
             }
         case REGISTER_USER_ERROR: 
