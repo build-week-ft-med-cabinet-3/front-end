@@ -85,11 +85,15 @@ export const reducer = (state = initialState, action) => {
         case DELETE_PROFILE: // to change
             return {
                 ...state,
+                username: action.payload,
+                password: action.payload,
                 isFetching: true,
             }
         case DELETE_PROFILE_SUCCESS: // to change
             return {
                 ...state,
+                username: action.payload,
+                password: action.payload,
                 isFetching: false,
             }
         case DELETE_PROFILE_ERROR: // to change
@@ -99,13 +103,17 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload.message,
             }
         case LOGIN_USER: 
+            console.log(action.payload)
             return {
                 ...state,
                 isFetching: true,
             }
         case LOGIN_USER_SUCCESS: 
+            const creds = JSON.parse(action.payload)
             return {
                 ...state,
+                email: creds.email,
+                password: creds.password,
                 isFetching: false,
             }
         case LOGIN_USER_ERROR: 

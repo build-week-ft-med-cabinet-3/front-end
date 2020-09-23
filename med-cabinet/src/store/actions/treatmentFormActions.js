@@ -37,12 +37,12 @@ export const loginUser = (info) => {
         axiosWithAuth()
             .post('auth/login', info) // to update
             .then(res => {
-                console.log(res, "<==== SUCCESSFUL LOGIN DATA");
+                console.log(res.config.data, "<==== SUCCESSFUL LOGIN DATA");
                 localStorage.setItem('token', res.data.token)
-                window.location = "http://localhost:3000/protected"; // to change
+                // window.location = "http://localhost:3000/protected"; // to change
                 dispatch({
                     type: LOGIN_USER_SUCCESS, 
-                    payload: res.data.all
+                    payload: res.config.data
                 })
             })
             .catch(err => {

@@ -7,13 +7,13 @@ const SpecificSymptoms = ({symptoms, formValues, checkHandler, theme}) => {
     const [isChecked, setIsChecked] = useState(false);
 
     const clickHandler = (evt) => {
-        const {name, value} = evt.target;
         evt.preventDefault();
         setIsChecked(!isChecked);
+        const {name, value} = evt.target;
         if (value === 'true') {
-            checkHandler(name, true)
-        } else {
             checkHandler(name, false)
+        } else {
+            checkHandler(name, true)
         }
     }
 

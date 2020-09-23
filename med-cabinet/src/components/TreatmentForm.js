@@ -29,6 +29,12 @@ const TreatmentForm = ({ symptoms, addTreatment }) => {
 
     const submitHandler = (evt) => {
         evt.preventDefault();
+        const symptomsString = Object.keys(formValues).reduce((o, key) => {
+            formValues[key] === true && (o[key] = formValues[key]);
+            return o 
+        }, {})
+        const info = Object.keys(symptomsString).join(', ').toString();
+        console.log(info, "SUBMIT HANDLER INTERCEPT")
         addTreatment(formValues);
     }
 
