@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import Header from "./Header";
 import TreatmentForm from "./TreatmentForm";
 
 const DashboardContainer = styled.div`
@@ -12,6 +12,7 @@ const DashboardContainer = styled.div`
 const Dashboard = () => {
   return (
     <DashboardContainer>
+      <Header />
       <TreatmentForm />
     </DashboardContainer>
   );
