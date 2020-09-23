@@ -32,6 +32,7 @@ const SignUp = () => {
   };
   const onChange = (evt) => {
     const { name, value } = evt.target;
+    validate(name, value);
     setValues({ ...values, [name]: value });
   };
 
@@ -48,6 +49,7 @@ const SignUp = () => {
         variant="filled"
         onChange={onChange}
         value={values.email}
+        error={errors.email === "" ? false : true}
       />{" "}
       <br />
       <TextField
@@ -58,23 +60,25 @@ const SignUp = () => {
         required
         onChange={onChange}
         value={values.password}
+        error={errors.password === "" ? false : true}
       />{" "}
       <br />
       <TextField
-        name="text"
+        name="password"
         variant="filled"
         type="Password"
         required
         placeholder="Re-enter your password"
         onCharge={onChange}
         value={values.confirmPassword}
+        error={errors.confirmPassword === "" ? false : true}
       />
       <br />
       <TextField
         id="date"
         label="Birthday"
         type="date"
-        defaultValue="2020-05-24"
+        defaultValue="1999-09-25"
         InputLabelProps={{
           shrink: true,
         }}

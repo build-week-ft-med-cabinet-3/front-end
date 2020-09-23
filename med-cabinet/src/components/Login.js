@@ -37,14 +37,21 @@ const Login = () => {
 
   return (
     <form>
-      <TextField name="email" variant="filled" type="email" label="Email" />
+      <TextField
+        name="email"
+        variant="filled"
+        type="email"
+        label="Email"
+        error={errors.email === "" ? false : true}
+      />
       <TextField
         name="password"
         variant="filled"
         type="Password"
         label="Password"
-      /> <br/>
-
+        error={errors.password === "" ? false : true}
+      />{" "}
+      <br />
       <Button variant="contained" color="primary">
         Login
       </Button>

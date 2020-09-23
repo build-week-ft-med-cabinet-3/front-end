@@ -4,6 +4,7 @@ import { Box } from "@material-ui/core";
 import { withStyles } from "@material-ui/styles";
 import Header from "./Header";
 import { Autocomplete } from "@material-ui/lab";
+import Footer from "./Footer";
 
 const Img = withStyles({
   root: {
