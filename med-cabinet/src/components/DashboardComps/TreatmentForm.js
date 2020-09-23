@@ -69,10 +69,11 @@ const TreatmentForm = ({ symptoms, addTreatment }) => {
       <List
         className="treatment-form-div"
         style={{
-          maxHeight: "70%",
+          height: "100%",
           overflow: "auto",
           width: "80%",
           padding: "20px",
+          marginBottom: "100px",
         }}
       >
         <h3>What do you want to treat?</h3>
@@ -90,6 +91,11 @@ const TreatmentForm = ({ symptoms, addTreatment }) => {
             color="secondary"
             id="treatment-form-button"
             onClick={submitHandler}
+            style={{
+              height: "40px",
+              width: "100%",
+              fontSize: ".65em",
+            }}
           >
             {" "}
             Suggest Strains
