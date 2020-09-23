@@ -6,6 +6,7 @@ const RecommendedStrainsContainer = styled.div`
   width: 100%;
   height: 400px;
   background: lightblue;
+  border-bottom: 0.75px solid #bdbdbd;
 `;
 
 const NoRecStrainsContainer = styled.div`
@@ -23,12 +24,19 @@ const NoRecIcon = styled.img`
   height: 100px;
 `;
 
+const NoStrainsText = styled.p`
+  color: #bdbdbd;
+  font-size: 0.75em;
+`;
+
 const RecommendedStrains = () => {
   return (
     <RecommendedStrainsContainer>
       <NoRecStrainsContainer>
         <NoRecIcon src={med} alt="No recommendation icons" />
-        <div>You have 0 Recommend Strains for Treatment</div>
+        <NoStrainsText>
+          You have 0 Recommend Strains for Treatment
+        </NoStrainsText>
       </NoRecStrainsContainer>
     </RecommendedStrainsContainer>
   );

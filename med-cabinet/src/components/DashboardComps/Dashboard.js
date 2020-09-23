@@ -8,7 +8,7 @@ import RecommendedStrains from "./RecommendedStrains";
 const DashboardContainer = styled.div`
   width: 100vw;
   // height: 100vh;
-  background: #ffeaea;
+  // background: #ffeaea;
 `;
 
 const DashComponents = styled.div`
@@ -20,7 +20,7 @@ const StrainContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: #e0e0e0;
+  // background: #e0e0e0;
 `;
 
 const Dashboard = () => {

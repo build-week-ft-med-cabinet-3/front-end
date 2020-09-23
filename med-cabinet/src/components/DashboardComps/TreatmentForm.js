@@ -9,7 +9,10 @@ import styled from "styled-components";
 
 const FormContainer = styled.div`
   width: 40vw;
-  background: #f2f2f2;
+  // background: #f2f2f2;
+  border-top: 0.75px solid #bdbdbd;
+  border-right: 0.75px solid #bdbdbd;
+  border-bottom: 0.75px solid #bdbdbd;
 `;
 
 // object of array to help properly sort the accordian lists
