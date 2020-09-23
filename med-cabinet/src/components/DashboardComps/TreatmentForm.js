@@ -9,7 +9,6 @@ import styled from "styled-components";
 
 const FormContainer = styled.div`
   width: 40vw;
-  // height: 100vh;
   background: #f2f2f2;
 `;
 
