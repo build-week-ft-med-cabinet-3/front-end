@@ -11,7 +11,7 @@ import SpecificSymptoms from './SpecificSymptoms';
 const CustomAccordian = ({checkHandler, formValues, properties, name, isChecked}) => {
     
     return (
-    <Accordian>
+    <Accordian >
            
         <AccordianSummary
         expandIcon={<ExpandMoreIcon />}

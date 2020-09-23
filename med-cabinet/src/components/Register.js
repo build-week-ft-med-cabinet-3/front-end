@@ -44,13 +44,14 @@ const SignUp = ({registerUser}) => {
     };
     
     return (
-       <form>
+       <form className='login-form'>
             <TextField 
             name='email'
             label='Email'
             variant='filled'
             onChange={onChange}
             value={values.email}
+            color="secondary"
             /> <br/>
 
             <TextField
@@ -61,12 +62,14 @@ const SignUp = ({registerUser}) => {
             required
             onChange={onChange}
             value={values.password}
+            color="secondary"
             /> <br/>
 
             <Button 
             onClick={onSubmit}
             variant="contained" 
-            color="primary">
+            color="secondary"
+            >
                 SIGN UP!
             </Button>
 

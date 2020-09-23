@@ -45,7 +45,7 @@ const Login = ({loginUser}) => {
       }
 
     return (
-        <form>
+        <form className='login-form'>
             <TextField 
             name='email'
             variant='filled'
@@ -53,6 +53,8 @@ const Login = ({loginUser}) => {
             label='Email'
             value={values.email}
             onChange={onChange}
+            className='login-form-field'
+            color="secondary"
             />
             <TextField 
             name='password'
@@ -61,12 +63,15 @@ const Login = ({loginUser}) => {
             label='Password'
             value={values.password}
             onChange={onChange}
+            className='login-form-field'
+            color="secondary"
             />
 
             <Button 
             onClick={loginHandler}
+            className='login-form-field'
             variant="contained" 
-            color="primary">
+            color="secondary">
                 Login
             </Button>
 
