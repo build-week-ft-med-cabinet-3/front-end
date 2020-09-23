@@ -33,9 +33,10 @@ const TreatmentForm = ({ symptoms, addTreatment }) => {
             formValues[key] === true && (o[key] = formValues[key]);
             return o 
         }, {})
-        const info = Object.keys(symptomsString).join(', ').toString();
-        console.log(info, "SUBMIT HANDLER INTERCEPT")
-        addTreatment(formValues);
+        const info = {
+            'symptoms': Object.keys(symptomsString).join(', ').toString()
+        }
+        addTreatment(info);
     }
 
     const checkHandler = (name, value) => {

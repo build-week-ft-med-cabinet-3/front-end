@@ -23,6 +23,7 @@ const Profile = (props) => {
 
     const finalDelete = (evt) => {
         evt.preventDefault();
+        console.log(email, password, "email pass")
         deleteProfile({email, password})
     }
     
