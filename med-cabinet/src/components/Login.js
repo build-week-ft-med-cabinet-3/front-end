@@ -42,6 +42,7 @@ const Login = () => {
         variant="filled"
         type="email"
         label="Email"
+        onChange={onChange}
         error={errors.email === "" ? false : true}
       />
       <TextField
@@ -49,6 +50,7 @@ const Login = () => {
         variant="filled"
         type="Password"
         label="Password"
+        onChange={onChange}
         error={errors.password === "" ? false : true}
       />{" "}
       <br />
