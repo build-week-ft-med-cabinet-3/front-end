@@ -83,6 +83,7 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload.message,
             }
         case DELETE_PROFILE: // to change
+            console.log(action.payload)
             return {
                 ...state,
                 username: action.payload,

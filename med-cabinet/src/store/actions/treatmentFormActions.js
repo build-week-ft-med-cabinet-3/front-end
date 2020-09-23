@@ -116,13 +116,13 @@ export const addTreatment = (info) => {
 // }
 
 // Delete Profile Action
-export const deleteProfile = (user) => {
-    console.log(user, "DELETE PROFILE ACTION")
+export const deleteProfile = (user, id) => {
+    console.log(id, "<=======user id")
     return (dispatch) => {
         dispatch({ type: DELETE_PROFILE});
         axios
-            .put(`${url}auth/${user.id}`, user) // to update 
-            .then(res => console.log(res))
+            .delete(`${url}auth/${id}`, user) // to update 
+            .then(res => console.log(res, "<==========="))
             .catch(err => console.log(err))
     }
 }

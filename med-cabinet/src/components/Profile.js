@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import { deleteProfile } from '../store/actions/treatmentFormActions';
 
 const Profile = (props) => {
-    const {email, password, deleteProfile} = props;
+    const {email, password, deleteProfile, state} = props;
     const [isClicked, setIsClick] = useState(false);
     const params = useParams();
 
@@ -23,8 +23,8 @@ const Profile = (props) => {
 
     const finalDelete = (evt) => {
         evt.preventDefault();
-        console.log(email, password, "email pass")
-        deleteProfile({email, password})
+        console.log(params.id)
+        deleteProfile(state, params.id)
     }
     
     return (
@@ -61,8 +61,9 @@ const Profile = (props) => {
 
 const mapStateToProps = state => {
     return {
+        state,
         email: state.email,
-        password: state.password, 
+        password: state.password,
     }
 }
 
