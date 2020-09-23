@@ -8,11 +8,10 @@ import Footer from "./Footer";
 
 const Img = withStyles({
   root: {
-    display: "flex",
     backgroundImage: `url(${myImage})`,
-    backgroundPosition: "center",
+    backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "center",
+    backgroundSize: "cover",
     height: "100vh",
     width: "100%",
   },
