@@ -24,7 +24,7 @@ store.subscribe(() => {
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Link to='/register'>Click</Link>
+      <Link to='/register'>Click</Link> 
       <Provider store={store}>
         <App />
       </Provider>
