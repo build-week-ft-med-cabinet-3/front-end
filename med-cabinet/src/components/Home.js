@@ -3,6 +3,7 @@ import React from "react";
 import FormContainer from "./FormContainer";
 import { Box } from "@material-ui/core";
 import MedImg from "./Image";
+import Header from "./Header";
 
 const HomeWrapper = withStyles({
   root: {
@@ -13,8 +14,8 @@ const HomeWrapper = withStyles({
 const Home = () => {
   return (
     <div>
+      <Header />
       <HomeWrapper>
-        <FormContainer />
         <MedImg />
       </HomeWrapper>
     </div>

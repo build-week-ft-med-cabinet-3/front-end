@@ -3,6 +3,8 @@ import { TabContext, TabList, TabPanel } from "@material-ui/lab";
 import { Tab } from "@material-ui/core";
 import SignUp from "./SignUp";
 import Login from "./Login";
+import { withStyles } from "@material-ui/styles";
+import Typography from "@material-ui/core/Typography";
 
 const FormTabs = () => {
   const [tab, setTab] = useState("1");
@@ -10,6 +12,12 @@ const FormTabs = () => {
   const onChange = (event, newValue) => {
     setTab(newValue);
   };
+
+  const TabsWrapper = withStyles({
+    root: {
+      border: "10px solid red",
+    },
+  });
 
   return (
     <div>

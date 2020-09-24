@@ -15,21 +15,19 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: "#E26276",
+    color: "	#228B22",
   },
   toolbar: {
     minHeight: 128,
     alignItems: "flex-start",
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(2),
-    color: "#7AC74F",
+    color: "#228B22",
   },
   title: {
     flexGrow: 1,
     alignSelf: "flex-end",
-  },
-  bar: {
-    color: "white",
+    color: "#228B22",
   },
 }));
 
@@ -38,12 +36,12 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="white">
+      <AppBar position="static">
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
             className={classes.menuButton}
-            color="theme"
+            color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
@@ -51,13 +49,13 @@ export default function Header() {
           <Typography className={classes.title} variant="h3" noWrap>
             MedSwap
           </Typography>
-          <IconButton aria-label="search" color="#E26276">
+          <IconButton aria-label="search" color="inherit">
             <SearchIcon />
           </IconButton>
           <IconButton
             aria-label="display more actions"
             edge="end"
-            color="#E26276"
+            color="inherit"
           >
             <MoreIcon />
           </IconButton>

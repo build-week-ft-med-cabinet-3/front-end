@@ -9,11 +9,13 @@ import FormContainer from "./FormContainer";
 
 const Img = withStyles({
   root: {
+    display: "flex",
+    justifyContent: "center",
     backgroundImage: `url(${myImage})`,
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    height: "100vh",
+    height: "100%",
     width: "100%",
   },
 })(Box);
@@ -21,7 +23,6 @@ const Img = withStyles({
 const MedImg = () => {
   return (
     <Img>
-      <Header />
       <FormContainer />
     </Img>
   );
