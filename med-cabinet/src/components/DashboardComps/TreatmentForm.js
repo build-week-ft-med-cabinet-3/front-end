@@ -78,7 +78,7 @@ const TreatmentForm = ({ symptoms, addTreatment }) => {
           marginBottom: "100px",
         }}
       >
-        <h3>What do you want to treat?</h3>
+        <h6>What do you want to treat?</h6>
         <form style={{ width: "100%" }}>
           {themes.map((theme) => (
             <CustomAccordian

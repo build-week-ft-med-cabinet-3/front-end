@@ -21,7 +21,10 @@ const CustomAccordian = ({
         aria-controls="list of symptoms"
         id="accordian-symptoms-list"
       >
-        <Typography className="accordian-title"> {name} </Typography>
+        <Typography style={{ fontSize: ".75em" }} className="accordian-title">
+          {" "}
+          {name}{" "}
+        </Typography>
       </AccordianSummary>
       {Object.keys(formValues).map(
         (symptoms) =>

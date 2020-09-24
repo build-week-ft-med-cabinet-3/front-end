@@ -4,12 +4,17 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import med from "./assets/med.svg";
 import loadingStrains from "./assets/loadingStrains.gif";
+import saveIcon from "./assets/saveIcon.svg";
 
 const RecommendedStrainsContainer = styled.div`
   width: 100%;
-  height: 400px;
+  min-height: 400px;
   // background: lightblue;
   border-bottom: 0.75px solid #bdbdbd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const NoRecStrainsContainer = styled.div`
@@ -41,6 +46,49 @@ const Spinner = styled.img`
   height: 60px;
 `;
 
+const CardContainer = styled.div`
+  width: 420px;
+  height: 600px;
+  border: 0.5px solid #bdbdbd;
+  margin-top: 10px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+`;
+
+const RecText = styled.h6`
+  width: 420px;
+  text-align: left;
+`;
+
+const CardWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const SaveButton = styled.div`
+  width: 90%;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: yellow;
+`;
+
+const SaveTxt = styled.p`
+  font-size: 0.75em;
+`;
+
+const SaveIcon = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
 const RecommendedStrains = ({ recommendedStrain, isFetching }) => {
   if (recommendedStrain === null) {
     return (
@@ -65,7 +113,16 @@ const RecommendedStrains = ({ recommendedStrain, isFetching }) => {
   } else {
     return (
       <RecommendedStrainsContainer>
-        <div>{recommendedStrain.Name}</div>
+        <RecText>Recommended Treatment</RecText>
+        <CardContainer>
+          <CardWrapper>
+            <SaveButton>
+              <SaveTxt>Save</SaveTxt>
+              <SaveIcon src={saveIcon} alt="save icon" />
+            </SaveButton>
+            <div>{recommendedStrain.Name}</div>
+          </CardWrapper>
+        </CardContainer>
       </RecommendedStrainsContainer>
     );
   }
