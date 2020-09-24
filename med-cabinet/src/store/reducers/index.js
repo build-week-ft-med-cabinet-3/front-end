@@ -22,6 +22,7 @@ const initialState = {
     error: '',
     isFetching: false,
     savedStrains: [],
+    id: '',
     symptoms: {
         'cramps': false, 
         'depression': false, 
@@ -65,37 +66,34 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload.message,
             }
         case EDIT_PROFILE: 
-            console.log(action, state)
             return {
                 ...state,
                 isFetching: true,
             }
         case EDIT_PROFILE_SUCCESS: 
+            console.log(action.payload, "ACTION HERE")
+            const editCreds = JSON.parse(action.payload)
             return {
                 ...state,
-                email: action.payload,
-                password: action.payload,
+                email: editCreds.email,
+                password: editCreds.password,
                 isFetching: false,
             }
         case EDIT_PROFILE_ERROR: 
+            console.log(action.payload, "ACTION HERE")
             return {
                 ...state,
                 isFetching: false,
                 error: action.payload.message,
             }
         case DELETE_PROFILE: 
-            console.log(action.payload)
             return {
                 ...state,
-                username: action.payload,
-                password: action.payload,
                 isFetching: true,
             }
         case DELETE_PROFILE_SUCCESS: 
             return {
                 ...state,
-                username: action.payload,
-                password: action.payload,
                 isFetching: false,
             }
         case DELETE_PROFILE_ERROR: 
@@ -116,6 +114,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 email: loginCreds.email,
                 password: loginCreds.password,
+                id: loginCreds.id,
                 isFetching: false,
             }
         case LOGIN_USER_ERROR: 
@@ -134,7 +133,8 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 email: registerCreds.email,
-                password: registerCreds.email,
+                password: registerCreds.password,
+                id: registerCreds.id,
                 isFetching: false,
             }
         case REGISTER_USER_ERROR: 

@@ -25,12 +25,12 @@ export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR'
 
 // url
 const url = 'https://medswap.herokuapp.com/api/'
+// const cors = 'https://cors-anywhere.herokuapp.com/'
 
 // action creators
 
 // Login
 export const loginUser = (info) => {
-    console.log(info, "INFOOOOO")
     return (dispatch) => {
         dispatch({ type: LOGIN_USER});
         axiosWithAuth()
@@ -57,20 +57,19 @@ export const loginUser = (info) => {
 }
 
 // Register
-export const registerUser = (info) => {
+export const registerUser = (info, id) => {
     console.log(info)
     return (dispatch) => {
         dispatch({ type: REGISTER_USER })
-        axios
+        axiosWithAuth()
             .post(`${url}auth/register`, info)
             .then(res => {
+                const id = res.data.data.id
                 dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data.data })
+                window.location = `http://localhost:3000/profile/${res.data.data.id}`; 
             })
             .catch(err => {
                 dispatch({ type: REGISTER_USER_ERROR, payload: err })
-            })
-            .finally(() => {
-                // window.location = "http://www.google.com"; // to change
             })
     }
 }
@@ -102,12 +101,13 @@ export const addTreatment = (info) => {
 
 // Edit Profile Action
 export const editProfile = (user, id) => {
+    console.log(user, id, "<========")
     return (dispatch) => {
         dispatch({ type: EDIT_PROFILE })
-        axios
+        axiosWithAuth()
             .put(`${url}auth/${id}`, user)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .then(res => console.log(res, "ITS WORKING"))
+            .catch(err => console.log(err, "its not working :("))
     }
 }
 
@@ -118,9 +118,10 @@ export const deleteProfile = (user, id) => {
         axios
             .delete(`${url}auth/${id}`, user)  
             .then(res => {
+                console.log(res)
                 dispatch({
                     type: DELETE_PROFILE_SUCCESS,
-                    payload: res.data.data.message
+                    payload: res.data.message
                 })
             })
             .catch(err => {
@@ -129,6 +130,9 @@ export const deleteProfile = (user, id) => {
                     type: DELETE_PROFILE_ERROR,
                     payload: 'There was an error'
                 })
+            })
+            .finally(() => {
+                window.location = 'http://localhost:3000/'
             })
     }
 }

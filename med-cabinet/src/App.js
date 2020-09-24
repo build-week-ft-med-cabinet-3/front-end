@@ -9,24 +9,14 @@ import { PrivateRoute } from './components/PrivateRoute';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 function App() {
+
   return (
-    <Router>
-
-        <Route exact path='/register'>
-          <Register />
-        </Route>
-
-        <Route exact path='/login'>
-          <Login />
-        </Route>
-
+    <>
+        <Route path='/register' component={Register}/>
+        <Route exact path='/login' component={Login}/>
         <PrivateRoute exact path='/protected' component={TreatmentForm}/> 
-        
-        <Route exact path='/profile/:id'>
-          <Profile />
-        </Route>
-        
-    </Router>
+        <Route path='/profile/:id' component={Profile} />
+    </>
   );
 }
 

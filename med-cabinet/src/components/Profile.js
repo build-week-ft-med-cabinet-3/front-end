@@ -8,11 +8,9 @@ import { useParams } from 'react-router-dom';
 import { deleteProfile, editProfile } from '../store/actions/treatmentFormActions';
 import TextField from '@material-ui/core/TextField';
 
-const Profile = (props) => {
-    const {email, password, deleteProfile, state} = props;
+const Profile = ({editProfile, deleteProfile, state}) => {
     const [isClicked, setIsClick] = useState(false);
     const [editState, setEditState] = useState(state);
-    const params = useParams();
 
     const clickHandler = (evt) => {
         evt.preventDefault();
@@ -34,13 +32,12 @@ const Profile = (props) => {
 
     const finalDelete = (evt) => {
         evt.preventDefault();
-        console.log(params.id);
-        deleteProfile(state, params.id);
+        deleteProfile(state, state.id);
     }
 
     const editUser = (evt) => {
         evt.preventDefault();
-        editProfile(editState, params.id);
+        editProfile(editState, state.id);
     }
     
     return (
@@ -98,8 +95,6 @@ const Profile = (props) => {
 const mapStateToProps = state => {
     return {
         state,
-        email: state.email,
-        password: state.password,
     }
 }
 

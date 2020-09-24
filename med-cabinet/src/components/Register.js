@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TextField, Button } from '@material-ui/core'
 import * as yup from 'yup'
 import schema from '../utils/schema'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import {registerUser} from '../store/actions/treatmentFormActions';
 import { connect } from 'react-redux';
@@ -17,9 +17,10 @@ const defaultErrors = {
     password: '',    
 }
 
-const SignUp = ({registerUser}) => {
+const Register = ({ registerUser }) => {
     const [values, setValues] = useState(defaultValues)
     const [errors, setErrors] = useState(defaultErrors)    
+    const  { id } = useParams();
       
     const validate = (name, value) => {
         yup
@@ -40,7 +41,7 @@ const SignUp = ({registerUser}) => {
       
     const onSubmit = (evt) => {
         evt.preventDefault();
-        registerUser(values)
+        registerUser(values, id)
     };
     
     return (
@@ -77,11 +78,11 @@ const SignUp = ({registerUser}) => {
     )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        
+
     }
 }
 
-export default connect(mapStateToProps, {registerUser})(SignUp);
+export default connect(mapStateToProps, {registerUser})(Register);
 
