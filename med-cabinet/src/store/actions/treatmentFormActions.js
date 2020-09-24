@@ -35,12 +35,11 @@ export const loginUser = (info) => {
     axiosWithAuth()
       .post('auth/login', info) // to update
       .then((res) => {
-        console.log(res, '<==== SUCCESSFUL LOGIN DATA');
         localStorage.setItem('token', res.data.token);
         // window.location = 'http://localhost:3000/protected'; // to change
         dispatch({
           type: LOGIN_USER_SUCCESS,
-          payload: res.config.data,
+          payload: res.data.user,
         });
       })
       .catch((err) => {
@@ -100,7 +99,6 @@ export const addTreatment = (info) => {
 
 // Edit Profile Action
 export const editProfile = (user, id) => {
-  console.log(user, id, '<========');
   return (dispatch) => {
     dispatch({ type: EDIT_PROFILE });
     axiosWithAuth()

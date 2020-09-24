@@ -71,16 +71,13 @@ export const reducer = (state = initialState, action) => {
         isFetching: true,
       };
     case EDIT_PROFILE_SUCCESS:
-      console.log(action.payload, 'ACTION HERE');
-      const editCreds = JSON.parse(action.payload);
       return {
         ...state,
-        email: editCreds.email,
-        password: editCreds.password,
+        email: action.payload.email,
+        password: action.payload.password,
         isFetching: false,
       };
     case EDIT_PROFILE_ERROR:
-      console.log(action.payload, 'ACTION HERE');
       return {
         ...state,
         isFetching: false,
@@ -103,19 +100,16 @@ export const reducer = (state = initialState, action) => {
         error: action.payload.message,
       };
     case LOGIN_USER:
-      console.log(action.payload);
       return {
         ...state,
         isFetching: true,
       };
     case LOGIN_USER_SUCCESS:
-      const loginCreds = JSON.parse(action.payload);
-      console.log(loginCreds, '<===');
       return {
         ...state,
-        email: loginCreds.email,
-        password: loginCreds.password,
-        id: loginCreds.id,
+        email: action.payload.email,
+        password: action.payload.password,
+        id: action.payload.id,
         isFetching: false,
       };
     case LOGIN_USER_ERROR:
@@ -130,12 +124,11 @@ export const reducer = (state = initialState, action) => {
         isFetching: true,
       };
     case REGISTER_USER_SUCCESS:
-      const registerCreds = action.payload;
       return {
         ...state,
-        email: registerCreds.email,
-        password: registerCreds.password,
-        id: registerCreds.id,
+        email: action.payload.email,
+        password: action.payload.password,
+        id: action.payload.id,
         isFetching: false,
       };
     case REGISTER_USER_ERROR:
