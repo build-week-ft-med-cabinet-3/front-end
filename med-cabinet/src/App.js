@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Home from "./components/Home";
+import "fontsource-roboto";
 
 function App() {
   return (

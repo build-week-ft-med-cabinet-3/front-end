@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import * as yup from "yup";
 import schema from "../utilities/schema";
+import axios from "axios";
 
 const defaultValues = {
   email: "",
@@ -16,6 +17,22 @@ const defaultErrors = {
 const Login = () => {
   const [values, setValues] = useState(defaultValues);
   const [errors, setErrors] = useState(defaultErrors);
+  const [login, setLogin] = useState("");
+
+  const returnUser = () => {
+    axios
+      .post("https://medswap.herokuapp.com/api/auth/login", values)
+      .then((res) => {
+        console.log(res.data);
+        setLogin(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setValues(defaultValues);
+      });
+  };
 
   const validate = (name, value) => {
     yup
@@ -44,6 +61,7 @@ const Login = () => {
         label="Email"
         onChange={onChange}
         error={errors.email === "" ? false : true}
+        value={values.email}
       />
       <TextField
         name="password"
@@ -52,9 +70,10 @@ const Login = () => {
         label="Password"
         onChange={onChange}
         error={errors.password === "" ? false : true}
+        value={values.password}
       />{" "}
       <br />
-      <Button variant="contained" color="primary">
+      <Button onClick={returnUser} variant="contained" color="primary">
         Login
       </Button>
     </form>

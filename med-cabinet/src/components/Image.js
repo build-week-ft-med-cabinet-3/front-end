@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/styles";
 import Header from "./Header";
 import { Autocomplete } from "@material-ui/lab";
 import Footer from "./Footer";
+import FormContainer from "./FormContainer";
 
 const Img = withStyles({
   root: {
@@ -21,6 +22,7 @@ const MedImg = () => {
   return (
     <Img>
       <Header />
+      <FormContainer />
     </Img>
   );
 };

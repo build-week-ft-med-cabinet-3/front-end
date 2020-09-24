@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import * as yup from "yup";
 import schema from "../utilities/schema";
+import axios from "axios";
 
 const defaultValues = {
   email: "",
@@ -18,6 +19,21 @@ const defaultErrors = {
 const SignUp = () => {
   const [values, setValues] = useState(defaultValues);
   const [errors, setErrors] = useState(defaultErrors);
+  const [register, setRegister] = useState("");
+
+  const returnUser = () => {
+    delete values.confirmPassword;
+    axios
+      .post("https://medswap.herokuapp.com/api/auth/register", values)
+      .then((res) => {
+        console.log(res.data);
+        setRegister(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {});
+  };
 
   const validate = (name, value) => {
     yup
@@ -64,12 +80,13 @@ const SignUp = () => {
       />{" "}
       <br />
       <TextField
-        name="password"
+        name="confirmPassword"
         variant="filled"
         type="Password"
+        label="Confirm-Password"
         required
         placeholder="Re-enter your password"
-        onCharge={onChange}
+        onChange={onChange}
         value={values.confirmPassword}
         error={errors.confirmPassword === "" ? false : true}
       />
@@ -84,7 +101,7 @@ const SignUp = () => {
         }}
       />{" "}
       <br />
-      <Button variant="contained" color="primary">
+      <Button onClick={returnUser} variant="contained" color="primary">
         SIGN UP!
       </Button>
     </form>

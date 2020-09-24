@@ -3,7 +3,7 @@ import React from "react";
 import FormContainer from "./FormContainer";
 import { Box } from "@material-ui/core";
 import MedImg from "./Image";
-import { Autocomplete } from "@material-ui/lab";
+
 const HomeWrapper = withStyles({
   root: {
     display: "flex",

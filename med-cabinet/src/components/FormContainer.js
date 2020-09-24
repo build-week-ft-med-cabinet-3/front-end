@@ -11,7 +11,7 @@ const FormWrapper = withStyles({
     flexDirection: "column",
     width: "100%",
     height: "100vh",
-    background: "#E26276",
+    // background: "#E26276",
   },
 })(Box);
 
