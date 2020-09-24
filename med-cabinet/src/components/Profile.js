@@ -13,6 +13,7 @@ import TextField from '@material-ui/core/TextField';
 const Profile = ({ editProfile, deleteProfile, state }) => {
   const [isClicked, setIsClick] = useState(false);
   const [editState, setEditState] = useState(state);
+  console.log(state, '<========');
 
   const preventDelete = (evt) => {
     evt.preventDefault();
