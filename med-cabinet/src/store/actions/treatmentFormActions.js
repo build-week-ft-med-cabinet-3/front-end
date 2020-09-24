@@ -22,7 +22,7 @@ export const REGISTER_USER = "REGISTER_USER";
 export const REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
 export const REGISTER_USER_ERROR = "REGISTER_USER_ERROR";
 
-// url
+// server API url
 const url = "https://medswap.herokuapp.com/api/";
 
 // action creators
@@ -133,5 +133,12 @@ export const deleteProfile = (user, id) => {
           payload: "There was an error",
         });
       });
+  };
+};
+
+// Save Treatment Action
+export const saveTreatment = (info) => {
+  return (dispatch) => {
+    axios.post(`${url}`);
   };
 };

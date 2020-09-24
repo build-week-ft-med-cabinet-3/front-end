@@ -150,7 +150,11 @@ export const reducer = (state = initialState, action) => {
         isFetching: false,
         error: action.payload.message,
       };
-
+    // case SAVE_STRAIN:
+    //   return {
+    //     ...state,
+    //     savedStrains: [...state, action.payload],
+    //   };
     default:
       return state;
   }
