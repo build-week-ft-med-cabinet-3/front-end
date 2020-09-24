@@ -6,16 +6,15 @@ import Login from './components/Login';
 import Register from './components/Register';
 import './App.css';
 import { PrivateRoute } from './components/PrivateRoute';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 function App() {
-
   return (
     <>
-        <Route exact path='/register' component={Register}/>
-        <Route exact path='/login' component={Login}/>
-        <PrivateRoute exact path='/protected' component={TreatmentForm}/> 
-        <Route path='/profile/:id' component={Profile} />
+      <Route exact path="/register" component={Register} />
+      <Route exact path="/login" component={Login} />
+      <PrivateRoute exact path="/protected" component={TreatmentForm} />
+      <Route path="/profile/:id" component={Profile} />
     </>
   );
 }
