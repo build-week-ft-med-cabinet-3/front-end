@@ -77,7 +77,7 @@ const SaveButton = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: yellow;
+  // background: yellow;
 `;
 
 const SaveTxt = styled.p`
@@ -120,7 +120,25 @@ const RecommendedStrains = ({ recommendedStrain, isFetching }) => {
               <SaveTxt>Save</SaveTxt>
               <SaveIcon src={saveIcon} alt="save icon" />
             </SaveButton>
-            <div>{recommendedStrain.Name}</div>
+            <h7>{recommendedStrain.Name}</h7>
+            <p style={{ fontSize: "0.75em" }}>
+              {recommendedStrain.Description}
+            </p>
+
+            {/* <IntroDataDiv>
+              <IconDiv>
+                <TreatmentIcon />
+              </IconDiv>
+              <IntroDataDiv>
+                <Name>{recommendedStrain.Name}</Name>
+                <RatingDiv>
+                  <TopRatedDiv>
+                    <RewardIcon />
+                    <RewardTxt>Top Rated</RewardTxt>
+                  </TopRatedDiv>
+                </RatingDiv>
+              </IntroDataDiv>
+            </IntroDataDiv> */}
           </CardWrapper>
         </CardContainer>
       </RecommendedStrainsContainer>
