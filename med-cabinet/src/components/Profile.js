@@ -4,17 +4,12 @@ import { CardMedia } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { deleteProfile, editProfile } from '../store/actions/treatmentFormActions';
 import TextField from '@material-ui/core/TextField';
 
 const Profile = ({editProfile, deleteProfile, state}) => {
     const [isClicked, setIsClick] = useState(false);
     const [editState, setEditState] = useState(state);
-
-    const clickHandler = (evt) => {
-        evt.preventDefault();
-    }
 
     const preventDelete = (evt) => {
         evt.preventDefault();

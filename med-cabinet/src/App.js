@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-        <Route path='/register' component={Register}/>
+        <Route exact path='/register' component={Register}/>
         <Route exact path='/login' component={Login}/>
         <PrivateRoute exact path='/protected' component={TreatmentForm}/> 
         <Route path='/profile/:id' component={Profile} />

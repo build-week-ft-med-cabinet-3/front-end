@@ -9,6 +9,7 @@
 
 .treatment-form-div {
   width: 25%;
+  overflow: scroll;
 }
 
 #treatment-form-button {

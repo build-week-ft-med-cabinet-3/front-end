@@ -55,7 +55,7 @@ const Login = ({loginUser}) => {
             onChange={onChange}
             className='login-form-field'
             color="secondary"
-            />
+            /><br/>
             <TextField 
             name='password'
             variant='filled'
@@ -65,7 +65,7 @@ const Login = ({loginUser}) => {
             onChange={onChange}
             className='login-form-field'
             color="secondary"
-            />
+            /><br/>
 
             <Button 
             onClick={loginHandler}

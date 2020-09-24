@@ -3,7 +3,6 @@ import { TextField, Button } from '@material-ui/core'
 import * as yup from 'yup'
 import schema from '../utils/schema'
 import { useHistory, useParams } from 'react-router-dom';
-import axios from 'axios';
 import {registerUser} from '../store/actions/treatmentFormActions';
 import { connect } from 'react-redux';
 

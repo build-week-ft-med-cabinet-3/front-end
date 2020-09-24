@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { loadState, saveState } from './api/index';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 const persistedState = loadState();
 const store = createStore(reducer, persistedState, applyMiddleware(thunk, logger));
@@ -24,6 +24,7 @@ store.subscribe(() => {
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <Link to='/register'>Click</Link>
       <Provider store={store}>
         <App />
       </Provider>
