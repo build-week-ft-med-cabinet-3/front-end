@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import saveIcon from "./assets/saveIcon.svg";
 import { Link } from "react-router-dom";
+import StrainPage from "./StrainPage";
 
 const NoSavedStrainsContainer = styled.div`
   width: 100%;
