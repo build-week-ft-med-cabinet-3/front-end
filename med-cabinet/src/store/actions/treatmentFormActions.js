@@ -159,4 +159,19 @@ export const saveTreatment = (info) => {
       });
   };
 };
-// };
+
+// Delete SavedTreatment
+export const deleteStrain = (id) => {
+  return (dispatch) => {
+    console.log("I am the id", id);
+    axiosWithAuth()
+      .delete(`https:/medswap.herokuapp.com/api/savedstrains/${id}`)
+      .then((res) => {
+        console.log("I am the res ", res);
+        dispatch({ type: DELETE_STRAIN_SUCCESS, payload: id });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};

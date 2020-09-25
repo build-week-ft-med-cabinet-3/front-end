@@ -15,4 +15,5 @@ export {
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
   SAVE_STRAIN_SUCCESS,
+  DELETE_STRAIN_SUCCESS,
 } from "./treatmentFormActions";

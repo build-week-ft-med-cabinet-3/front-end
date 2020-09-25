@@ -1,11 +1,12 @@
-/* eslint-disable */
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import Header from "./Header";
 import SavedStrains from "./SavedStrains";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import saveIcon from "./assets/saveIcon.svg";
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { deleteStrain } from "../../store/actions/treatmentFormActions";
 
 const StrainPageContainer = styled.div`
   width: 100%;
@@ -66,10 +67,16 @@ const SaveIcon = styled.img`
   height: 20px;
 `;
 
-const StrainPage = (props) => {
+const StrainPage = ({ deleteStrain }) => {
   const [strainData, setStrainData] = useState([]);
   const { id } = useParams();
   console.log("I am the value of id", typeof id);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log("Unsave Button Clicked!!!");
+    deleteStrain(id);
+  };
 
   useEffect(() => {
     axiosWithAuth()
@@ -103,8 +110,8 @@ const StrainPage = (props) => {
               <LeftWrapper>
                 <LInfo>
                   <Name>{item.Name}</Name>
-                  <SaveButton>
-                    <SaveTxt>Save</SaveTxt>
+                  <SaveButton onClick={handleClick}>
+                    <SaveTxt>Unsave Strain</SaveTxt>
                     <SaveIcon src={saveIcon} alt="save icon" />
                   </SaveButton>
                 </LInfo>
@@ -118,4 +125,10 @@ const StrainPage = (props) => {
   );
 };
 
-export default StrainPage;
+const mapStateToProps = (state) => {
+  return {
+    savedStrains: state.savedStrains,
+  };
+};
+
+export default connect(mapStateToProps, { deleteStrain })(StrainPage);

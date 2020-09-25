@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import saveIcon from "./assets/saveIcon.svg";
 import { Link } from "react-router-dom";
 import StrainPage from "./StrainPage";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 const NoSavedStrainsContainer = styled.div`
   width: 100%;

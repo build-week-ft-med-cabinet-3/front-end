@@ -15,6 +15,7 @@ import {
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
   SAVE_STRAIN_SUCCESS,
+  DELETE_STRAIN_SUCCESS,
 } from "../actions";
 
 const initialState = {
@@ -155,7 +156,19 @@ export const reducer = (state = initialState, action) => {
       const newSavedStrain = action.payload;
       return {
         ...state,
+        // savedStrains: [...state.savedStrains, newSavedStrain],
         savedStrains: [...state.savedStrains, newSavedStrain],
+      };
+    case DELETE_STRAIN_SUCCESS:
+      const removedStrain = action.payload;
+      console.log("I am removed strain", removedStrain);
+      const filteredStrains = state.savedStrains.filter((item) => {
+        return item.id !== Number(removedStrain);
+      });
+      console.log("I am filtred strains", filteredStrains);
+      return {
+        ...state,
+        savedStrains: filteredStrains,
       };
 
     default:
