@@ -26,7 +26,7 @@ function App() {
       {/* <Route exact path='/profile/:id'>
           <Profile />
         </Route> */}
-      <Route exact path="/strainpage/:id">
+      <Route exact path={`/strainpage/:id`}>
         <StrainPage />
       </Route>
     </Router>

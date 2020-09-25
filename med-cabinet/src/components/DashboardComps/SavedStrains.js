@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import saveIcon from "./assets/saveIcon.svg";
+import { Link } from "react-router-dom";
 
 const NoSavedStrainsContainer = styled.div`
   width: 100%;
@@ -85,9 +86,11 @@ const SavedStrains = ({ savedStrains }) => {
         <SavedStrainSignifier>Saved Strains</SavedStrainSignifier>
         {savedStrains.map((item) => {
           return (
-            <SavedStrainCard key={item.id}>
-              <StrainName>{item.Name}</StrainName>
-            </SavedStrainCard>
+            <Link to={`/strainpage/${item.id}`}>
+              <SavedStrainCard key={item.id}>
+                <StrainName>{item.Name}</StrainName>
+              </SavedStrainCard>
+            </Link>
           );
         })}
       </SavedStrainsContainer>
