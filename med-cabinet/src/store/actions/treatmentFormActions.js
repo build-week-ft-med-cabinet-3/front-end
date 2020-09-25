@@ -22,6 +22,14 @@ export const REGISTER_USER = "REGISTER_USER";
 export const REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
 export const REGISTER_USER_ERROR = "REGISTER_USER_ERROR";
 
+export const SAVE_STRAIN = "SAVE_STRAIN";
+export const SAVE_STRAIN_SUCCESS = "SAVE_STRAIN_SUCCESS";
+export const SAVE_STRAIN_ERROR = "SAVE_STRAIN_ERROR";
+
+export const DELETE_STRAIN = "DELETE_STRAIN";
+export const DELETE_STRAIN_SUCCESS = "DELETE_STRAIN_SUCCESS";
+export const DELETE_STRAIN_ERROR = "DELETE_STRAIN_ERROR";
+
 // server API url
 const url = "https://medswap.herokuapp.com/api/";
 
@@ -139,6 +147,7 @@ export const deleteProfile = (user, id) => {
 // Save Treatment Action
 export const saveTreatment = (info) => {
   return (dispatch) => {
-    axios.post(`${url}`);
+    console.log("I am the info", info);
+    axiosWithAuth().post(`${url}/savedstrains`, info).then().catch();
   };
 };

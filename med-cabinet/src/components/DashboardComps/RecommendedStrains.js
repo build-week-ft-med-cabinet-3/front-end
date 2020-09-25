@@ -1,6 +1,7 @@
 import { FormatListNumberedRtlOutlined } from "@material-ui/icons";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { saveTreatment } from "../../store/actions/treatmentFormActions";
 import styled from "styled-components";
 import med from "./assets/med.svg";
 import loadingStrains from "./assets/loadingStrains.gif";
@@ -89,7 +90,33 @@ const SaveIcon = styled.img`
   height: 20px;
 `;
 
-const RecommendedStrains = ({ recommendedStrain, isFetching }) => {
+const RecommendedStrains = ({
+  recommendedStrain,
+  isFetching,
+  saveTreatment,
+}) => {
+  const [savedStrain, setSavedStrain] = useState();
+
+  useEffect(() => {
+    return saveTreatment(savedStrain);
+  }, [saveTreatment, savedStrain]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    setSavedStrain({
+      ...recommendedStrain,
+      Rating: recommendedStrain.Rating.toString(),
+      // Ailments: recommendedStrain.Ailments.join(""),
+    });
+
+    console.log("savedStrain state", savedStrain);
+  };
+
+  {
+    console.log("recommended strain", recommendedStrain);
+  }
+
   if (recommendedStrain === null) {
     return (
       <RecommendedStrainsContainer>
@@ -116,7 +143,7 @@ const RecommendedStrains = ({ recommendedStrain, isFetching }) => {
         <RecText>Recommended Treatment</RecText>
         <CardContainer>
           <CardWrapper>
-            <SaveButton>
+            <SaveButton onClick={handleClick}>
               <SaveTxt>Save</SaveTxt>
               <SaveIcon src={saveIcon} alt="save icon" />
             </SaveButton>
@@ -155,4 +182,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, {})(RecommendedStrains);
+export default connect(mapStateToProps, { saveTreatment })(RecommendedStrains);

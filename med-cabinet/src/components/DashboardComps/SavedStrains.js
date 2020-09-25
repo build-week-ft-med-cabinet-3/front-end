@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import saveIcon from "./assets/saveIcon.svg";
 
@@ -92,4 +93,11 @@ const SavedStrains = () => {
   }
 };
 
-export default SavedStrains;
+const mapStateToProps = (state) => {
+  return {
+    recommendedStrain: state.recommendedStrain,
+    isFetching: state.isFetching,
+  };
+};
+
+export default connect(mapStateToProps, {})(SavedStrains);
