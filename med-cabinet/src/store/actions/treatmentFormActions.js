@@ -32,23 +32,23 @@ export const DELETE_STRAIN_ERROR = "DELETE_STRAIN_ERROR";
 
 // server API url
 const url = "https://medswap.herokuapp.com/api/";
-
+const vercel = "https://fe-dg-medswap-7l85r0eel.vercel.app/";
 // action creators
 
 // Login
 export const loginUser = (info) => {
-  console.log(info, "INFOOOOO");
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
     axiosWithAuth()
-      .post("auth/login", info) // to update
+      .post("auth/login", info)
       .then((res) => {
-        console.log(res.config.data, "<==== SUCCESSFUL LOGIN DATA");
+        console.log(res.data.user, "<==== SUCCESSFUL LOGIN DATA");
         localStorage.setItem("token", res.data.token);
-        // window.location = "http://localhost:3000/protected"; // to change
+        // window.location = `${vercel}protected`;
+        window.location = `http://localhost:3000/protected`;
         dispatch({
           type: LOGIN_USER_SUCCESS,
-          payload: res.config.data,
+          payload: res.data.user,
         });
       })
       .catch((err) => {
@@ -77,7 +77,7 @@ export const registerUser = (info) => {
         dispatch({ type: REGISTER_USER_ERROR, payload: err });
       })
       .finally(() => {
-        // window.location = "http://www.google.com"; // to change
+        window.location = `${vercel}login`;
       });
   };
 };
@@ -92,7 +92,6 @@ export const addTreatment = (info) => {
         .then((res) => {
           console.log("ACTION CONSOLEEE", res);
           console.log("ACTION res.data", res.data);
-          console.log("ACTION res.data.all", res.data.all);
           dispatch({
             type: ADD_TREATMENT_SUCCESS,
             payload: res.data,
@@ -115,10 +114,23 @@ export const addTreatment = (info) => {
 export const editProfile = (user, id) => {
   return (dispatch) => {
     dispatch({ type: EDIT_PROFILE });
-    axios
-      .put(`${url}auth/${id}`, user)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    axiosWithAuth()
+      .put(`auth/${id}`, user)
+      .then((res) => {
+        console.log(res, "!!!!!");
+        dispatch({
+          type: EDIT_PROFILE_SUCCESS,
+          payload: res.config.data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: EDIT_PROFILE_ERROR,
+          payload: {
+            message: "ERROR",
+          },
+        });
+      });
   };
 };
 
@@ -126,12 +138,12 @@ export const editProfile = (user, id) => {
 export const deleteProfile = (user, id) => {
   return (dispatch) => {
     dispatch({ type: DELETE_PROFILE });
-    axios
-      .delete(`${url}auth/${id}`, user)
+    axiosWithAuth()
+      .delete(`auth/${id}`, user)
       .then((res) => {
         dispatch({
           type: DELETE_PROFILE_SUCCESS,
-          payload: res.data.data.message,
+          payload: res.data.message,
         });
       })
       .catch((err) => {
@@ -140,6 +152,9 @@ export const deleteProfile = (user, id) => {
           type: DELETE_PROFILE_ERROR,
           payload: "There was an error",
         });
+      })
+      .finally(() => {
+        window.location = `${vercel}`;
       });
   };
 };
@@ -149,7 +164,7 @@ export const saveTreatment = (info) => {
   return (dispatch) => {
     console.log("I am the info", info);
     axiosWithAuth()
-      .post(`https:/medswap.herokuapp.com/api/savedstrains`, info)
+      .post(`savedstrains`, info)
       .then((res) => {
         console.log("I am the res ", res);
         dispatch({ type: SAVE_STRAIN_SUCCESS, payload: res.data.data });
@@ -165,7 +180,7 @@ export const deleteStrain = (id) => {
   return (dispatch) => {
     console.log("I am the id", id);
     axiosWithAuth()
-      .delete(`https:/medswap.herokuapp.com/api/savedstrains/${id}`)
+      .delete(`savedstrains/${id}`)
       .then((res) => {
         console.log("I am the res ", res);
         dispatch({ type: DELETE_STRAIN_SUCCESS, payload: id });

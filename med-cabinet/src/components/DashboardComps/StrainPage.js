@@ -80,7 +80,7 @@ const StrainPage = ({ deleteStrain }) => {
 
   useEffect(() => {
     axiosWithAuth()
-      .get("https://medswap.herokuapp.com/api/savedstrains/")
+      .get("savedstrains/")
       .then((res) => {
         console.log("I am the res within Strain Page", res.data);
         const pageData = res.data.filter((item) => {

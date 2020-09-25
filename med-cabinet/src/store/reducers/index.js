@@ -24,6 +24,7 @@ const initialState = {
   error: "",
   isFetching: false,
   savedStrains: [],
+  id: "",
   symptoms: {
     cramps: false,
     depression: false,
@@ -60,11 +61,13 @@ export const reducer = (state = initialState, action) => {
       );
       return {
         ...state,
+        id: state.id,
         isFetching: false,
         symptoms: {
           ...state.symptoms,
           action,
         },
+        error: "",
         recommendedStrain: action.payload,
       };
     case ADD_TREATMENT_ERROR:
@@ -74,7 +77,6 @@ export const reducer = (state = initialState, action) => {
         error: action.payload.message,
       };
     case EDIT_PROFILE:
-      console.log(action, state);
       return {
         ...state,
         isFetching: true,
@@ -82,8 +84,9 @@ export const reducer = (state = initialState, action) => {
     case EDIT_PROFILE_SUCCESS:
       return {
         ...state,
-        email: action.payload,
-        password: action.payload,
+        email: action.payload.email,
+        password: action.payload.password,
+        error: "",
         isFetching: false,
       };
     case EDIT_PROFILE_ERROR:
@@ -120,11 +123,12 @@ export const reducer = (state = initialState, action) => {
         isFetching: true,
       };
     case LOGIN_USER_SUCCESS:
-      const loginCreds = JSON.parse(action.payload);
       return {
         ...state,
-        email: loginCreds.email,
-        password: loginCreds.password,
+        email: action.payload.email,
+        password: action.payload.password,
+        id: action.payload.id,
+        error: "",
         isFetching: false,
       };
     case LOGIN_USER_ERROR:
@@ -139,11 +143,12 @@ export const reducer = (state = initialState, action) => {
         isFetching: true,
       };
     case REGISTER_USER_SUCCESS:
-      const registerCreds = action.payload;
       return {
         ...state,
-        email: registerCreds.email,
-        password: registerCreds.email,
+        email: action.payload.email,
+        password: action.payload.password,
+        id: action.payload.id,
+        error: "",
         isFetching: false,
       };
     case REGISTER_USER_ERROR:
