@@ -14,6 +14,7 @@ import {
   REGISTER_USER,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
+  SAVE_STRAIN_SUCCESS,
 } from "../actions";
 
 const initialState = {
@@ -150,11 +151,13 @@ export const reducer = (state = initialState, action) => {
         isFetching: false,
         error: action.payload.message,
       };
-    // case SAVE_STRAIN:
-    //   return {
-    //     ...state,
-    //     savedStrains: [...state, action.payload],
-    //   };
+    case SAVE_STRAIN_SUCCESS:
+      const newSavedStrain = action.payload;
+      return {
+        ...state,
+        savedStrains: [...state.savedStrains, newSavedStrain],
+      };
+
     default:
       return state;
   }

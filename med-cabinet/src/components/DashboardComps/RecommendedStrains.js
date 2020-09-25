@@ -104,18 +104,20 @@ const RecommendedStrains = ({
   const handleClick = (e) => {
     e.preventDefault();
 
+    delete recommendedStrain.ID;
+
     setSavedStrain({
       ...recommendedStrain,
       Rating: recommendedStrain.Rating.toString(),
-      // Ailments: recommendedStrain.Ailments.join(""),
+      user_id: 4,
     });
 
     console.log("savedStrain state", savedStrain);
   };
 
-  {
-    console.log("recommended strain", recommendedStrain);
-  }
+  // {
+  //   // console.log("recommended strain", recommendedStrain);
+  // }
 
   if (recommendedStrain === null) {
     return (

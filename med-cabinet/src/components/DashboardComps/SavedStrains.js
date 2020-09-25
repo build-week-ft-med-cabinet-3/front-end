@@ -61,13 +61,15 @@ const StrainName = styled.path`
   font-size: 0.5em;
 `;
 
-const savedStrains = [
-  { id: 0, name: "Purple Kush" },
-  { id: 1, name: "Purple Kush" },
-  { id: 3, name: "Purple Kush" },
-];
+// const savedStrains = [
+//   { id: 0, name: "Purple Kush" },
+//   { id: 1, name: "Purple Kush" },
+//   { id: 3, name: "Purple Kush" },
+// ];
 
-const SavedStrains = () => {
+const SavedStrains = ({ savedStrains }) => {
+  console.log("I am the value of savedStrains", savedStrains);
+
   if (!savedStrains[0]) {
     return (
       <NoSavedStrainsContainer>
@@ -84,7 +86,7 @@ const SavedStrains = () => {
         {savedStrains.map((item) => {
           return (
             <SavedStrainCard key={item.id}>
-              <StrainName>{item.name}</StrainName>
+              <StrainName>{item.Name}</StrainName>
             </SavedStrainCard>
           );
         })}
@@ -95,8 +97,7 @@ const SavedStrains = () => {
 
 const mapStateToProps = (state) => {
   return {
-    recommendedStrain: state.recommendedStrain,
-    isFetching: state.isFetching,
+    savedStrains: state.savedStrains,
   };
 };
 
