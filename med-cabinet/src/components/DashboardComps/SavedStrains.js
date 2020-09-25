@@ -64,12 +64,6 @@ const StrainName = styled.path`
   font-size: 0.5em;
 `;
 
-// const savedStrains = [
-//   { id: 0, name: "Purple Kush" },
-//   { id: 1, name: "Purple Kush" },
-//   { id: 3, name: "Purple Kush" },
-// ];
-
 const SavedStrains = ({ savedStrains }) => {
   console.log("I am the value of savedStrains", savedStrains);
 

@@ -27,11 +27,12 @@ const CustomAccordian = ({
         </Typography>
       </AccordianSummary>
       {Object.keys(formValues).map(
-        (symptoms) =>
+        (symptoms, index) =>
           properties.includes(symptoms) && (
             <SpecificSymptoms
               symptoms={symptoms}
               formValues={formValues}
+              key={index}
               checkHandler={checkHandler}
             />
           )

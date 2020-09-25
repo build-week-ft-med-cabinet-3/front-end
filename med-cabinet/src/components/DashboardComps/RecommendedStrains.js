@@ -1,4 +1,3 @@
-import { FormatListNumberedRtlOutlined } from "@material-ui/icons";
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { saveTreatment } from "../../store/actions/treatmentFormActions";
@@ -94,8 +93,10 @@ const RecommendedStrains = ({
   recommendedStrain,
   isFetching,
   saveTreatment,
+  id,
 }) => {
   const [savedStrain, setSavedStrain] = useState();
+  console.log(id, "<============");
 
   useEffect(() => {
     return saveTreatment(savedStrain);
@@ -109,7 +110,7 @@ const RecommendedStrains = ({
     setSavedStrain({
       ...recommendedStrain,
       Rating: recommendedStrain.Rating.toString(),
-      user_id: 4,
+      user_id: id,
     });
 
     console.log("savedStrain state", savedStrain);
@@ -175,12 +176,12 @@ const RecommendedStrains = ({
   }
 };
 
-// export default RecommendedStrains;
-
 const mapStateToProps = (state) => {
+  console.log(state, "<=========");
   return {
     recommendedStrain: state.recommendedStrain,
     isFetching: state.isFetching,
+    id: state.id,
   };
 };
 

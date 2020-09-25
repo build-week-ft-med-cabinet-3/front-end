@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import medSwap from "./assets/medSwap.svg";
 import user from "./assets/user.svg";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.div`
   width: 100vw;
@@ -37,15 +39,23 @@ const Profile = styled.img`
   // margin-left: 40px;
 `;
 
-const Header = () => {
+const Header = ({ id }) => {
   return (
     <HeaderContainer>
       <ComponentWrapper>
         <Logo src={medSwap} alt="" />
-        <Profile src={user} alt="" />
+        <Link to={`/profile/${id}`}>
+          <Profile src={user} alt="profile-img" />
+        </Link>
       </ComponentWrapper>
     </HeaderContainer>
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    id: state.id,
+  };
+};
+
+export default connect(mapStateToProps, {})(Header);
